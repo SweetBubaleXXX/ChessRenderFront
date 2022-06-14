@@ -1,0 +1,9 @@
+@use "./Colors.scss" as colors;
+
+.btn {
+    display: inline-block;
+    padding: 6px 10px;
+    font-size: 18px;
+    color: colors.$fg-primary;
+    background: colors.$fg-highlight;
+}
