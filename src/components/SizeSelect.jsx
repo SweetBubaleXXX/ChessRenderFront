@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../assets/styles/SizeSelect.scss';
 
 export default function SizeSelect(props) {
   const [sizes, setSizes] = useState();

@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import './assets/styles/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App URL={process.env.APIURL || "http://127.0.0.1:4400" || "http://chess.sweetbubalexxx.life"} />
+    <App URL={process.env.APIURL || "http://chess.sweetbubalexxx.life"} />
   </React.StrictMode>
 );

@@ -1,0 +1,8 @@
+@use "Colors" as colors;
+
+html,
+body,
+#root {
+    font-family: 'Fredoka', sans-serif;
+    background-color: colors.$bg-primary;
+}

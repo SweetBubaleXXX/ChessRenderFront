@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './Button';
 import CheckButton from './CheckButton';
 import SizeSelect from './SizeSelect';
+import '../assets/styles/Toolbar.scss';
 
 export default function Toolbar(props) {
   return (

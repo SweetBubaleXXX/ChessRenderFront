@@ -1,9 +1,22 @@
-@use "./Colors.scss" as colors;
+@use "Colors" as colors;
+@use "Effects" as effects;
 
 .btn {
     display: inline-block;
+    user-select: none;
+    cursor: pointer;
     padding: 6px 10px;
-    font-size: 18px;
-    color: colors.$fg-primary;
+    font-size: 20px;
+    border-radius: 2px;
+    color: colors.$fg-dark;
     background: colors.$fg-highlight;
+    box-shadow: effects.$dark-block-shadow;
+
+    &:hover {
+        color: colors.$fg-light
+    }
+
+    &:focus {
+        border: solid 1px colors.$fg-light;
+    }
 }

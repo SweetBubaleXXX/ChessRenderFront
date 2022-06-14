@@ -1,0 +1,8 @@
+@use "Colors" as colors;
+
+$dark-block-shadow: 1px 1px 3px colors.$shadow-dark;
+$dark-block-shadow-hover: 2px 2px 6px colors.$shadow-dark;
+$dark-inner-shadow: 0 0 2px colors.$shadow-dark;
+$dark-inner-shadow-hover: 0 0 4px colors.$shadow-dark;
+
+$fast-transition: .15s ease-in;

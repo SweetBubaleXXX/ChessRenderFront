@@ -1,0 +1,22 @@
+@use "Colors" as colors;
+@use "Effects" as effects;
+
+.toolbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin: 20px auto;
+    padding: 13px;
+    border-radius: 4px;
+    font-size: 20px;
+    color: colors.$fg-light;
+    background: colors.$fg-primary;
+    box-shadow: effects.$dark-block-shadow;
+
+    &>span,
+    &>div {
+        white-space: nowrap;
+        margin: 0 20px;
+    }
+}
