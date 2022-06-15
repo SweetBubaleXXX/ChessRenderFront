@@ -1,12 +1,14 @@
 @use "Colors" as colors;
 @use "Effects" as effects;
 
-$size: 25px;
+$size: 26px;
 
 .check-btn {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
     vertical-align: middle;
     width: $size;
     height: $size;
@@ -31,6 +33,24 @@ $size: 25px;
     }
 
     &:hover::before {
+        opacity: 1;
+    }
+
+    &::after {
+        $dot-spacing: 18%;
+        content: "";
+        position: absolute;
+        top: $dot-spacing;
+        bottom: $dot-spacing;
+        left: $dot-spacing;
+        right: $dot-spacing;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity effects.$fast-transition;
+        background: colors.$fg-highlight;
+    }
+
+    &.checked::after {
         opacity: 1;
     }
 }

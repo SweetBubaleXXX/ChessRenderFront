@@ -1,6 +1,8 @@
 @use "Colors" as colors;
 @use "Effects" as effects;
 
+$show-btn-size: 30px;
+
 .toolbar {
     display: flex;
     justify-content: space-around;
@@ -14,9 +16,61 @@
     background: colors.$fg-primary;
     box-shadow: effects.$dark-block-shadow;
 
-    &>span,
-    &>div {
+    &>.toolbar-label,
+    &>.btn.render {
         white-space: nowrap;
         margin: 0 20px;
+    }
+
+    &.mobile {
+        $line-hight: 50px;
+        display: grid;
+        grid-template-columns:
+            repeat(2, minmax($show-btn-size, 200px)) auto repeat(2, minmax($show-btn-size, 200px));
+        grid-template-rows: repeat(3, $line-hight);
+        grid-template-areas:
+            "icon icon render-btn . ."
+            ". check-btn check-btn check-btn ."
+            ". size-slct size-slct size-slct .";
+        justify-content: center;
+        overflow: hidden;
+        width: unset;
+        // height: $line-hight;
+        margin: 12px;
+        padding: 5px;
+
+        &>.toolbar-label {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        &>.btn.render {
+            grid-area: render-btn;
+            margin: auto;
+        }
+
+        &>.size-slct-label {
+            grid-area: size-slct;
+        }
+
+        &>.check-btn-label {
+            grid-area: check-btn;
+        }
+    }
+}
+
+.expand-toolbar-ico {
+    grid-area: icon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    width: $show-btn-size;
+    height: $show-btn-size;
+
+    &>.gg-move-down {
+        --ggs: 1.4;
+        color: colors.$fg-light
     }
 }

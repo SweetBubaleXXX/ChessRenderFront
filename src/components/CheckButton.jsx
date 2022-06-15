@@ -10,6 +10,11 @@ export default function CheckButton(props) {
   }
 
   return (
-    <span className={`check-btn ${checked ? 'checked' : ''}`} onClick={check}></span>
+    <span
+      className={`check-btn ${checked ? 'checked' : ''}`}
+      onClick={check}
+      onKeyPress={check}
+      tabIndex="0"
+    ></span>
   );
 }

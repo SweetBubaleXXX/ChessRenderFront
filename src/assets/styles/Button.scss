@@ -4,19 +4,19 @@
 .btn {
     display: inline-block;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
+    text-align: center;
+    width: fit-content;
     padding: 6px 10px;
     font-size: 20px;
     border-radius: 2px;
-    color: colors.$fg-dark;
+    border: solid 1px transparent;
+    color: colors.$fg-light;
     background: colors.$fg-highlight;
     box-shadow: effects.$dark-block-shadow;
 
     &:hover {
-        color: colors.$fg-light
-    }
-
-    &:focus {
-        border: solid 1px colors.$fg-light;
+        color: colors.$fg-dark;
     }
 }

@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from './Button';
 import CheckButton from './CheckButton';
 import SizeSelect from './SizeSelect';
+import { MobileLayoutContext } from './contexts/MobileLayoutContext';
 import '../assets/styles/Toolbar.scss';
 
 export default function Toolbar(props) {
-  return (
-    <div className="toolbar">
+  const isMobile = useContext(MobileLayoutContext);
 
-      <span className="toolbar-label">Size:
+  return (
+    <div className={`toolbar ${isMobile ? "mobile" : ""}`}>
+      {isMobile &&
+        <div className="expand-toolbar-ico">
+          <i className="gg-move-down"></i>
+        </div>}
+
+      <span className="toolbar-label size-slct-label">Size:
         <SizeSelect URL={props.URL} sizeSelected={props.sizeSelected} />
       </span>
 
-      <span className="toolbar-label">Render for white:
+      <span className="toolbar-label check-btn-label">Render for white:
         <CheckButton onClick={props.toggleWhite} />
       </span>
 
