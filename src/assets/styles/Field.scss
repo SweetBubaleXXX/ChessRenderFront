@@ -1,0 +1,30 @@
+@use "Colors" as colors;
+@use "Effects" as effects;
+
+.field {
+    $field-padding: 14px;
+    $field-margin: 12px;
+    $size: calc(100vw - 2 * $field-margin);
+
+    display: grid;
+    grid-template-rows: $field-padding repeat(8, 1fr) $field-padding;
+    grid-template-columns: $field-padding repeat(8, 1fr) $field-padding;
+    box-sizing: border-box;
+    width: $size;
+    height: $size;
+    margin: $field-margin*2 $field-margin;
+    border-radius: effects.$main-block-radius;
+    background: colors.$fg-dark;
+
+    &>.spacer {
+        vertical-align: middle;
+        text-align: center;
+        font-size: $field-padding;
+        line-height: $field-padding;
+        color: colors.$bg-primary;
+
+        &.horizontal {
+            line-height: calc(($size - 2 * $field-padding) / 8);
+        }
+    }
+}

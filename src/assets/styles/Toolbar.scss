@@ -1,16 +1,18 @@
 @use "Colors" as colors;
 @use "Effects" as effects;
 
-$show-btn-size: 30px;
+$show-btn-size: 35px;
 
 .toolbar {
+    $line-hight: 50px;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 90%;
     margin: 20px auto;
     padding: 13px;
-    border-radius: 4px;
+    border-radius: effects.$main-block-radius;
     font-size: 20px;
     color: colors.$fg-light;
     background: colors.$fg-primary;
@@ -23,7 +25,6 @@ $show-btn-size: 30px;
     }
 
     &.mobile {
-        $line-hight: 50px;
         display: grid;
         grid-template-columns:
             repeat(2, minmax($show-btn-size, 200px)) auto repeat(2, minmax($show-btn-size, 200px));
@@ -35,9 +36,10 @@ $show-btn-size: 30px;
         justify-content: center;
         overflow: hidden;
         width: unset;
-        // height: $line-hight;
+        height: $line-hight;
         margin: 12px;
         padding: 5px;
+        transition: height effects.$fast-transition;
 
         &>.toolbar-label {
             display: flex;
@@ -58,6 +60,14 @@ $show-btn-size: 30px;
             grid-area: check-btn;
         }
     }
+
+    &.mobile.expand {
+        height: 3 * $line-hight;
+
+        &>.expand-toolbar-ico>img {
+            transform: scaleY(-1);
+        }
+    }
 }
 
 .expand-toolbar-ico {
@@ -69,8 +79,9 @@ $show-btn-size: 30px;
     width: $show-btn-size;
     height: $show-btn-size;
 
-    &>.gg-move-down {
-        --ggs: 1.4;
-        color: colors.$fg-light
+    &>img {
+        width: 100%;
+        color: colors.$fg-light;
+        transition: transform effects.$fast-transition;
     }
 }

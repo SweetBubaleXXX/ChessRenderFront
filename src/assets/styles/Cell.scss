@@ -1,0 +1,13 @@
+@use "Colors" as colors;
+@use "Effects" as effects;
+
+.cell {
+
+    &.light {
+        background: colors.$fg-light;
+    }
+
+    &.dark {
+        background: colors.$fg-primary;
+    }
+}
