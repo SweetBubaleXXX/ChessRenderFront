@@ -2,12 +2,24 @@
 @use "Effects" as effects;
 
 .cell {
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: effects.$dark-block-shadow;
 
     &.light {
-        background: colors.$fg-light;
+        background: colors.$cell-light;
     }
 
     &.dark {
-        background: colors.$fg-primary;
+        background: colors.$cell-dark;
+    }
+
+    &.white {
+        color: colors.$piece-white;
+    }
+
+    &.black {
+        color: colors.$piece-black;
     }
 }

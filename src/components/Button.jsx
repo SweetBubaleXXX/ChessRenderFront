@@ -1,15 +1,19 @@
 import React from 'react';
 import '../assets/styles/Button.scss';
 
-export default function Button(props) {
+export default function Button({
+  type,
+  title,
+  onClick
+}) {
   return (
     <div
-      className={`btn ${props.type || "default"}`}
-      onClick={props.onClick}
+      className={`btn ${type || "default"}`}
+      onClick={onClick}
       onKeyPress={() => null}
       tabIndex="0"
     >
-      {props.title}
+      {title}
     </div>
   );
 }

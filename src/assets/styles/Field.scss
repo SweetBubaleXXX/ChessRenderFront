@@ -15,7 +15,7 @@
     height: $size;
     margin: $field-margin*2 $field-margin;
     border-radius: effects.$main-block-radius;
-    background: colors.$fg-dark;
+    background: colors.$fg-primary;
     box-shadow: effects.$dark-block-shadow;
 
     &>.spacer {
@@ -23,11 +23,16 @@
         text-align: center;
         font-size: $field-padding;
         line-height: $field-padding;
-        color: colors.$bg-primary;
+        color: colors.$fg-light;
 
         &.horizontal {
             margin: auto;
         }
+    }
+
+    .cell {
+        font-size: calc($size / 12);
+        line-height: calc(($size - 2 * $field-padding) / 8) ;
     }
 
     @media screen and (min-width: calc($max-size + 50px)) {
@@ -35,5 +40,10 @@
         height: $max-size;
         margin-left: auto;
         margin-right: auto;
+
+        .cell {
+            font-size: calc($max-size / 16);
+            line-height: calc(($max-size - 2 * $field-padding) / 8) ;
+        }
     }
 }

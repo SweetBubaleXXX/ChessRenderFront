@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import '../assets/styles/CheckButton.scss';
 
-export default function CheckButton(props) {
-  const [checked, setChecked] = useState(true);
+export default function CheckButton({ onClick }) {
+
+  const [checked, setChecked] = useState(false);
 
   function check() {
+    onClick(!checked);
     setChecked(!checked);
-    props.onClick(checked);
   }
+
+  useEffect(check, []);
 
   return (
     <span

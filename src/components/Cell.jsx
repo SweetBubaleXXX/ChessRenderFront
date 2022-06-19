@@ -1,12 +1,24 @@
 import React from "react";
+
+import { SYMBOLS } from "./Symbols";
+
 import "../assets/styles/Cell.scss";
 
 
-export default function Cell(props) {
+export default function Cell({
+  id,
+  light,
+  whitePiece,
+  children
+}) {
 
   return (
-    <div id={props.id} className={`cell ${props.light ? "light" : "dark"}`}>
-
+    <div id={id} className={`cell 
+    ${light ? "light" : "dark"}
+    ${whitePiece ? "white" : "black"}`}
+    onClick={()=>{}}
+    >
+      {SYMBOLS[children]}
     </div>
   );
 }

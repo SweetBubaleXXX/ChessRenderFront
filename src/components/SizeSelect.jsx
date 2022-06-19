@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../assets/styles/SizeSelect.scss';
 
 export default function SizeSelect(props) {
   const [sizes, setSizes] = useState();
+  const selectElem = useRef();
 
   function changeEvent(e) {
     props.sizeSelected(e.target.value)
@@ -21,12 +22,19 @@ export default function SizeSelect(props) {
       .then(setSizes, err => console.log(err.message));
   }, [props.URL]);
 
-  const options = (sizes && sizes.map(size => (
+  useEffect(() => {
+    let initEvent = new Event("change");
+    selectElem.current.value = (sizes && sizes.at(-1)) || "default";
+    changeEvent({ target: selectElem.current });
+    selectElem.current.dispatchEvent(initEvent);
+  }, [sizes]);
+
+  const options = (sizes?.length && sizes.map(size => (
     <option key={`size-opt-${size}`} value={size}>{size}px</option>
-  ))) || <option value={null}>Default</option>;
+  ))) || <option value="default">Default</option>;
 
   return (
-    <select className="size-slct" onChange={changeEvent}>
+    <select className="size-slct" onChange={changeEvent} ref={selectElem}>
       {options}
     </select>
   );
