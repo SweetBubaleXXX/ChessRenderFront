@@ -1,0 +1,27 @@
+@use "Colors" as colors;
+@use "Effects" as effects;
+
+.switcher {
+    $size: 20px;
+    $padding: 2px;
+
+    position: relative;
+    box-shadow: effects.$dark-block-shadow-hover,
+        inset effects.$dark-inner-shadow-hover;
+
+    &::after {
+        position: absolute;
+        top: $padding;
+        bottom: $padding;
+        left: $padding;
+        width: $size;
+        height: $size;
+        background-color: colors.$fg-highlight;
+        transition: effects.$fast-transition;
+    }
+
+    &.checked::after {
+        left: unset;
+        right: $padding;
+    }
+}

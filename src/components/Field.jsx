@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+
 import Cell from "./Cell";
 
 import { FieldOptionsContext } from "./contexts/FieldOptionsContext";
@@ -25,7 +26,6 @@ export default function Field() {
           id={cellId}
           light={light = !light}
           key={cellId}
-          whitePiece={field[y][x] === field[y][x].toUpperCase()}
         >
           {field[y][x]}
         </Cell>
