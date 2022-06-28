@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Toolbar from './components/Toolbar';
 import Field from './components/Field';
+import CellPopUp from './components/CellPopUp';
 
 import { MobileLayoutContext, MobileBreakpoint } from './components/contexts/MobileLayoutContext';
 import { FieldOptionsContext } from './components/contexts/FieldOptionsContext';

@@ -30,19 +30,22 @@ export default function Field() {
           {field[y][x]}
         </Cell>
       );
-      x === 7 && row.push(<div className="spacer" key={`space-hb-${y}`}></div>);
+      x === 7 && row.push(<div className="spacer horizontal" key={`space-hb-${y}`}></div>);
     }
 
     cells.push(row);
   }
 
+  const topSpacers = [...Array(10).keys()].map(i => <div className="spacer" key={`space-b-${i}`}></div>);
+  const bottomSpacers = [...Array(10).keys()].map(i =>
+    <div className="spacer" key={`space-${i}`}>{!([0, 9].includes(i)) && String.fromCharCode(96 + i)}</div>
+  );
+
   return (
     <div className="field">
-      {[...Array(10).keys()].map(i => <div className="spacer" key={`space-b-${i}`}></div>)}
-      {isWhite ? cells.reverse() : cells}
-      {[...Array(10).keys()].map(i =>
-        <div className="spacer" key={`space-${i}`}>{!([0, 9].includes(i)) && String.fromCharCode(96 + i)}</div>
-      )}
+      {topSpacers}
+      {isWhite ? cells.reverse() : cells.map(row => [row.at(0), ...row.slice(1, -1).reverse(), row.at(-1)])}
+      {isWhite ? bottomSpacers : bottomSpacers.reverse()}
     </div>
   );
 }
