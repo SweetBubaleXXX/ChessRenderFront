@@ -6,8 +6,10 @@ import CellPopUp from './components/CellPopUp';
 
 import { MobileLayoutContext, MobileBreakpoint } from './components/contexts/MobileLayoutContext';
 import { FieldOptionsContext } from './components/contexts/FieldOptionsContext';
+import { CellPopUpContext } from './components/contexts/CellPopUpContext';
 
 import './assets/styles/App.scss';
+
 
 function App({ URL }) {
   const [isMobile, setMobile] = useState(window.innerWidth < MobileBreakpoint);
@@ -23,6 +25,9 @@ function App({ URL }) {
     ["p", "p", "p", "p", "p", "p", "p", "p"],
     ["r", "h", "b", "q", "k", "b", "h", "r"]
   ]);
+  const [PopUpVisible, setPopUpVisible] = useState(false);
+  const [ClickedCell, setClickedCell] = useState();
+  const [ClickedPiece, setClickedPiece] = useState();
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -39,7 +44,14 @@ function App({ URL }) {
       }}>
         <Toolbar URL={URL}
         />
-        <Field />
+        <CellPopUpContext.Provider value={{
+          visibility: [PopUpVisible, setPopUpVisible],
+          coordinate: [ClickedCell, setClickedCell],
+          piece: [ClickedPiece, setClickedPiece]
+        }}>
+          <Field />
+          <CellPopUp />
+        </CellPopUpContext.Provider>
       </FieldOptionsContext.Provider>
     </MobileLayoutContext.Provider>
   );

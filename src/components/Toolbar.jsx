@@ -10,6 +10,7 @@ import { FieldOptionsContext } from './contexts/FieldOptionsContext';
 import expandToolbarIco from '../assets/icons/arrow-down-light.svg';
 import '../assets/styles/Toolbar.scss';
 
+
 export default function Toolbar({ URL }) {
   const isMobile = useContext(MobileLayoutContext);
   const [isWhite, setWhite] = useContext(FieldOptionsContext).color;

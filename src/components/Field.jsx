@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Cell from "./Cell";
 
 import { FieldOptionsContext } from "./contexts/FieldOptionsContext";
+import { CellPopUpContext } from "./contexts/CellPopUpContext";
 
 import "../assets/styles/Field.scss";
 
@@ -10,8 +11,13 @@ import "../assets/styles/Field.scss";
 export default function Field() {
   const [isWhite, setWhite] = useContext(FieldOptionsContext).color;
   const [field, setField] = useContext(FieldOptionsContext).field;
+  const [PopUpVisible, setPopUpVisible] = useContext(CellPopUpContext).visibility;
 
   const cells = [];
+
+  function CellClickEvent() {
+    setPopUpVisible(true);
+  }
 
   let light = false;
   for (let y = 0; y < 8; y++) {
@@ -26,6 +32,7 @@ export default function Field() {
           id={cellId}
           light={light = !light}
           key={cellId}
+          onClick={CellClickEvent}
         >
           {field[y][x]}
         </Cell>
