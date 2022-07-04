@@ -11,11 +11,19 @@ import "../assets/styles/Field.scss";
 export default function Field() {
   const [isWhite, setWhite] = useContext(FieldOptionsContext).color;
   const [field, setField] = useContext(FieldOptionsContext).field;
-  const [PopUpVisible, setPopUpVisible] = useContext(CellPopUpContext).visibility;
+  const [popUpVisible, setPopUpVisible] = useContext(CellPopUpContext).visibility;
+  const [clickedCell, setClickedCell] = useContext(CellPopUpContext).coordinate;
+  const [clickedPiece, setClickedPiece] = useContext(CellPopUpContext).piece;
+  const [whitePiece, setWhitePiece] = useContext(CellPopUpContext).color;
 
   const cells = [];
 
-  function CellClickEvent() {
+  function CellClickEvent(e) {
+    let id = e.target.id;
+    let [x, y] = id.split("").map(coordinate => +coordinate);
+    setClickedCell(id);
+    setClickedPiece(field[y][x]);
+    setWhitePiece(RegExp(/^[A-Z]$/).test(field[y][x]))
     setPopUpVisible(true);
   }
 

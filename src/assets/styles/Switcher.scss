@@ -3,19 +3,46 @@
 
 .switcher {
     $size: 20px;
-    $padding: 2px;
+    $padding: 3px;
 
     position: relative;
-    box-shadow: effects.$dark-block-shadow-hover,
-        inset effects.$dark-inner-shadow-hover;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    height: $size + 2 * $padding;
+    width: 2 * ($size + $padding);
+    border-radius: .5 * ($size + 2 * $padding);
+    background: colors.$bg-primary;
+    box-shadow: effects.$dark-block-shadow,
+        inset effects.$dark-inner-shadow;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: .5 * $size;
+        box-shadow: effects.$dark-block-shadow-hover,
+            inset effects.$dark-inner-shadow-hover;
+        opacity: 0;
+        transition: opacity effects.$fast-transition;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
 
     &::after {
+        content: "";
         position: absolute;
         top: $padding;
         bottom: $padding;
         left: $padding;
         width: $size;
         height: $size;
+        border-radius: 50%;
         background-color: colors.$fg-highlight;
         transition: effects.$fast-transition;
     }

@@ -11,7 +11,7 @@ import { CellPopUpContext } from './components/contexts/CellPopUpContext';
 import './assets/styles/App.scss';
 
 
-function App({ URL }) {
+function App({ API_URL }) {
   const [isMobile, setMobile] = useState(window.innerWidth < MobileBreakpoint);
   const [isWhite, setWhite] = useState(true);
   const [renderSize, setRenderSize] = useState();
@@ -25,9 +25,10 @@ function App({ URL }) {
     ["p", "p", "p", "p", "p", "p", "p", "p"],
     ["r", "h", "b", "q", "k", "b", "h", "r"]
   ]);
-  const [PopUpVisible, setPopUpVisible] = useState(false);
-  const [ClickedCell, setClickedCell] = useState();
-  const [ClickedPiece, setClickedPiece] = useState();
+  const [popUpVisible, setPopUpVisible] = useState(false);
+  const [clickedCell, setClickedCell] = useState("00");
+  const [clickedPiece, setClickedPiece] = useState("-");
+  const [whitePiece, setWhitePiece] = useState(true);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -42,12 +43,13 @@ function App({ URL }) {
         size: [renderSize, setRenderSize],
         field: [field, setField]
       }}>
-        <Toolbar URL={URL}
+        <Toolbar API_URL={API_URL}
         />
         <CellPopUpContext.Provider value={{
-          visibility: [PopUpVisible, setPopUpVisible],
-          coordinate: [ClickedCell, setClickedCell],
-          piece: [ClickedPiece, setClickedPiece]
+          visibility: [popUpVisible, setPopUpVisible],
+          coordinate: [clickedCell, setClickedCell],
+          piece: [clickedPiece, setClickedPiece],
+          color: [whitePiece, setWhitePiece]
         }}>
           <Field />
           <CellPopUp />

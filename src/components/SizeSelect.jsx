@@ -2,16 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import '../assets/styles/SizeSelect.scss';
 
-export default function SizeSelect(props) {
+export default function SizeSelect({ API_URL, sizeSelected }) {
   const [sizes, setSizes] = useState();
   const selectElem = useRef();
 
   function changeEvent(e) {
-    props.sizeSelected(e.target.value)
+    sizeSelected(e.target.value)
   }
 
   useEffect(() => {
-    fetch(new URL("/sizes", props.URL))
+    fetch(new URL("/sizes", API_URL))
       .then(res => {
         if (!res.ok) {
           // if (res.status === 400)
@@ -21,7 +21,7 @@ export default function SizeSelect(props) {
         return res.json();
       })
       .then(setSizes, err => console.log(err.message));
-  }, [props.URL]);
+  }, [API_URL]);
 
   useEffect(() => {
     let initEvent = new Event("change");
