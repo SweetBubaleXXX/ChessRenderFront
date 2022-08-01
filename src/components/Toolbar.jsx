@@ -25,7 +25,7 @@ export default function Toolbar({ API_URL }) {
   function render() {
     fetch(new URL(`/render?size=${renderSize}`, API_URL), {
       method: "POST",
-      mode: "no-cors",
+      // mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
         "Accept": "image/png"
